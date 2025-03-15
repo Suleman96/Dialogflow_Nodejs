@@ -1,0 +1,267 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f7fa;
+  margin: 0;
+}
+
+/* Chatbot Icon */
+.chatbot-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  padding: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  transition: transform 0.2s ease-in-out;
+}
+
+.chatbot-icon:hover {
+  transform: scale(1.1);
+}
+
+.chatbot-icon img {
+  width: 42px;
+  height: 42px;
+}
+
+/* Chatbot Container */
+.chatbot-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 360px;
+  height: 500px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 16px rgba(53, 53, 53, 0.25);
+  display: none; /* Initially hidden */
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 998;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.chatbot-header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.bot-logo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+
+
+.bot-name {
+  flex-grow: 1;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: 22px;
+  transition: color 0.2s ease-in-out;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+
+.minimize-btn,
+.close-btn {
+  cursor: pointer;
+  font-size: 22px;
+  margin-left: 10px;
+  transition: color 0.2s ease-in-out;
+}
+
+
+.minimize-btn:hover,
+.close-btn:hover {
+  color: #ddd;
+}
+
+/* Chatbox Area */
+#chatbox {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  background-color: #f4f7fa;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+
+
+/* Message Base Styling (CRITICAL FIX HERE) */
+/* Base Message Style */
+.message {
+  display: inline-block; /* crucial for dynamic sizing */
+  padding: 8px 12px;
+  border-radius: 14px;
+  margin-bottom: 8px;
+  word-wrap: break-word;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 70%;
+  width: break-word; /* Critical for dynamic adjustment */
+}
+
+/* User Message Styling */
+.user-message {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 14px 14px 0 14px;
+}
+
+/* Bot Message Styling */
+.bot-message {
+  align-self: flex-start;
+  background-color: #e0e0e0;
+  color: black;
+  border-radius: 14px 14px 14px 0;
+}
+
+
+/* Chat Input */
+.chat-input input {
+  color: white !important;  /* Ensures text is always white */
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.chat-input input:focus {
+  border: 1px solid #007bff;
+  outline: none;
+}
+
+.chat-input button {
+  margin-left: 8px;
+  padding: 10px 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s ease-in-out;
+}
+
+.chat-input button:hover {
+  background-color: #0056b3;
+}
+
+/* Scrollbar Styling */
+#chatbox::-webkit-scrollbar {
+  width: 6px;
+}
+
+#chatbox::-webkit-scrollbar-thumb {
+  background: #007bff;
+  border-radius: 10px;
+}
+
+#chatbox::-webkit-scrollbar-track {
+  background: #f4f7fa;
+}
+/* Styling for Rich Responses */
+.rich-message {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  margin: 10px 0;
+  font-size: 14px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.rich-image {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+
+.rich-button {
+  display: block;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 8px 0;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s ease-in-out;
+}
+
+.rich-button:hover {
+  background-color: #0056b3;
+}
+
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.chip {
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 16px;
+  padding: 10px 14px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease-in-out;
+}
+
+.chip:hover {
+  background-color: #d0d0d0;
+}
+
+.chip:focus {
+  outline: none;
+}
+
+.rich-link {
+  display: block;
+  margin-top: 5px;
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.rich-link:hover {
+  text-decoration: underline;
+}
+
+

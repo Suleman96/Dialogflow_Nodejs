@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiploPAL - AI Chatbot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Chatbot Icon (Custom Trigger) -->
+  <div class="chatbot-icon" onclick="toggleChatbot()">
+    <img src="Circular_Logo.png" alt="Chatbot Icon">
+  </div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbot">
+      <div class="chatbot-header">
+        <img src="Circular_Logo.png" alt="Logo" class="bot-logo">
+        <span class="bot-name">DiploPAL</span>
+        <span class="minimize-btn">−</span>
+        <span class="close-btn">×</span>
+      </div>
+    
+      <div class="chatbox" id="chatbox"></div>
+    
+      <div class="chat-input">
+        <input id="userInput" type="text" placeholder="Type your message...">
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+
+
+  <!-- Dialogflow Messenger Chatbot (Hidden Initially) -->
+  <!-- put logo chat title -->
+  <!-- chat-icon= "https://drive.google.com/file/d/1qIntAeRahGEuRt_MS9Fa2aWsZv8cHJzm/view?usp=sharing"-->
+    
+  <df-messenger
+    intent="WELCOME"
+    chat-icon= "Circular_Logo.png"
+    
+    chat-title="DiploPAL"
+    agent-id="bb482dfb-9f54-47de-9deb-9163165ebc4a"
+    language-code="en"
+
+  ></df-messenger>                                               
+
+
+
+
+
+  <!--  This goes at the top after language code chat-icon="https://drive.google.com/file/d/1qIntAeRahGEuRt_MS9Fa2aWsZv8cHJzm/view?usp=sharing" --> 
+
+
+  <!-- Load Dialogflow Messenger Script -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+  <!-- Custom Script to Hide Default Icon and Toggle Chatbot -->
+  <script>
+    function toggleChatbot() {
+      const dfMessenger = document.querySelector("df-messenger");
+      const chatWindow = dfMessenger.shadowRoot.querySelector("df-messenger-chat");
+
+      if (dfMessenger.style.display === "none" || dfMessenger.style.display === "") {
+        dfMessenger.style.display = "block"; // Show chatbot
+        setTimeout(() => {
+          chatWindow.setAttribute("open", "true"); // Open chat window
+        }, 300);
+      } else {
+        chatWindow.removeAttribute("open"); // Close chat window
+        setTimeout(() => {
+          dfMessenger.style.display = "none"; // Hide chatbot after closing
+        }, 300);
+      }
+    }
+
+    // Ensure chatbot is hidden on load
+    window.onload = function() {
+      const dfMessenger = document.querySelector("df-messenger");
+      dfMessenger.style.display = "none"; // Hide chatbot initially
+
+      setTimeout(() => {
+        const messengerStyle = document.createElement("style");
+        messengerStyle.innerHTML = `
+          df-messenger::part(chat-button) {
+            display: none !important; /* Completely hides the floating Dialogflow button */
+          }
+        `;
+        document.head.appendChild(messengerStyle);
+      }, 500);
+    };
+  </script>
+
+</body>
+</html>
