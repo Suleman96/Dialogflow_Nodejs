@@ -1,4 +1,7 @@
- this is key code from AWS EC2 <code>.\folder_name\dialogflow-key.pem</code>
+This is Key file (.pem format) from AWS EC2 
+```bash
+.\folder_name\dialogflow-key.pem</code>
+```
 
 Connect to linux command using ssh using gitbash: go to instance and start instance and take the ssh key:
 
