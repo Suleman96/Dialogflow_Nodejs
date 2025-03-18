@@ -13,6 +13,12 @@ Run this command, if necessary, to ensure your key is not publicly viewable.
 chmod 400 "dialogflow-key.pem"
 ```
 
+Instance using its Public DNS:
+```bash
+ec2-your-ec2-ip.eu-north-1.compute.amazonaws.com
+```
+
+Run the bottom line to connect using SSH 
 ```bash
 ssh -i "dialogflow-key.pem" ubuntu@ec2-your-ec2-ip.eu-north-1.compute.amazonaws.com
 ```
