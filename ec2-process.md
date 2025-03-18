@@ -2,10 +2,13 @@
 
 Connect to linux command using ssh using gitbash: go to instance and start instance and take the ssh key:
 
-- <code>chmod 400 "dialogflow-key.pem" </code>
-- <code>ssh -i "dialogflow-key.pem" ubuntu@ec2-your-ec2-ip.eu-north-1.compute.amazonaws.com </code>
+```bash
+chmod 400 "dialogflow-key.pem"
+ssh -i "dialogflow-key.pem" ubuntu@ec2-your-ec2-ip.eu-north-1.compute.amazonaws.com
+```
 
-<code>Upgrade and update packages on machine:</code>
+
+Upgrade and update packages on machine
 
 ```bash
 sudo apt update && sudo apt upgrade -y
