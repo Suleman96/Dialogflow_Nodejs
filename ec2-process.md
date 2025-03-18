@@ -63,7 +63,7 @@ transfer the ONLY json file to EC2
 scp -i dialogflow-key.pem -r chatbot_json_file.json  ubuntu@ec2-yuor-ip.eu-north-1.compute.amazonaws.com:/home/ubuntu/
 ```
 
-
+Use this JSON file to authenticate API requests
 ``` bash
 export GOOGLE_APPLICATION_CREDENTIALS="/home/ubuntu/chatbot_XXX_XXXXX.json"
 ```
