@@ -47,7 +47,7 @@ sudo apt-get install curl
 
 ```
 
-Install bun if you dont want to use node:
+### Install bun if you dont want to use node:
 ``` bash
 curl -fsSL https://bun.sh/install | bash
 sudo snap install bun-js
