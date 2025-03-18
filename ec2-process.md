@@ -1,12 +1,19 @@
+# Implementation of AWS EC2 
+## AWS Key for Instance
 This is Key file (.pem format) from AWS EC2 
 ```bash
-.\folder_name\dialogflow-key.pem</code>
+.\folder_name\dialogflow-key.pem
 ```
 
-Connect to linux command using ssh using gitbash: go to instance and start instance and take the ssh key:
+## Connect locally to EC2's Linux using SSH in Gitbash
+In [AWS EC2](https://eu-north-1.console.aws.amazon.com/ec2/), create Instance and get the SSH Key from the SSH Client:
 
+Run this command, if necessary, to ensure your key is not publicly viewable.
 ```bash
 chmod 400 "dialogflow-key.pem"
+```
+
+```bash
 ssh -i "dialogflow-key.pem" ubuntu@ec2-your-ec2-ip.eu-north-1.compute.amazonaws.com
 ```
 
