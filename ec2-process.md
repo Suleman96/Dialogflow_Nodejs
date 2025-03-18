@@ -57,13 +57,13 @@ ssh -i "dialogflow-ui-key.pem" ubuntu@ec2-your-ec2-ip.eu-north-1.compute.amazona
 
 transfer the ONLY json file to EC2
 ``` bash
-scp -i dialogflow-ui-key.pem -r diplopal-ydko-2e11661250b0.json  ubuntu@ec2-13-53-125-185.eu-north-1.compute.amazonaws.com:/home/ubuntu/
+scp -i dialogflow-key.pem -r chatbot_json_file.json  ubuntu@ec2-yuor-ip.eu-north-1.compute.amazonaws.com:/home/ubuntu/
 ```
 
 
-
+``` bash
 export GOOGLE_APPLICATION_CREDENTIALS="/home/ubuntu/chatbot_XXX_XXXXX.json"
-
+```
 
 
 
