@@ -2,12 +2,18 @@
 function toggleChatbot() {
   const chatbot = document.getElementById("chatbot");
   chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
+  if (chatbot.style.display === "flex") {
+    document.querySelector(".close-btn").style.display = "inline-block";
+    document.querySelector(".minimize-btn").style.display = "inline-block";
+  }
 }
 
 // ✅ Close chatbot completely
 function closeChatbot() {
-  document.getElementById("chatbot").style.display = "none";
+  const chatbot = document.getElementById("chatbot");
+  chatbot.style.display = "none";
 }
+
 
 // ✅ Minimize and restore chatbot
 function minimizeChatbot() {
@@ -144,4 +150,6 @@ observer.observe(document.getElementById("chatbox"), { childList: true });
 // ✅ Ensure chatbot container is hidden initially
 window.onload = () => {
   document.getElementById("chatbot").style.display = "none";
+  document.querySelector(".close-btn").style.display = "inline-block";
+  document.querySelector(".minimize-btn").style.display = "inline-block";
 };

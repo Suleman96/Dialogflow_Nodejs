@@ -10,15 +10,17 @@ body {
 /* Chatbot Icon */
 .chatbot-icon {
   position: fixed;
-  bottom: 20px;
+  bottom: 16px;
   right: 20px;
-  background-color: #007bff;
-  padding: 14px;
+  width: 45px;
+  background-color: #165491;
+  padding: 7px;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); */
   z-index: 999;
   transition: transform 0.2s ease-in-out;
+  height: 45px;
 }
 
 .chatbot-icon:hover {
@@ -26,8 +28,11 @@ body {
 }
 
 .chatbot-icon img {
-  width: 42px;
-  height: 42px;
+  width: 53px;
+  height: 51px;
+  position: relative;
+  top: -4px;
+  left: -4px;
 }
 
 /* Chatbot Container */
@@ -93,18 +98,22 @@ body {
 }
 
 
-.minimize-btn,
-.close-btn {
+.close-btn, .minimize-btn {
+  display: inline-block;
   cursor: pointer;
-  font-size: 22px;
-  margin-left: 10px;
-  transition: color 0.2s ease-in-out;
+  font-size: 24px;
+  margin-left: 12px;
+  padding: 4px;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 28px;
 }
 
-
-.minimize-btn:hover,
-.close-btn:hover {
-  color: #ddd;
+.close-btn:hover, .minimize-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Chatbox Area */

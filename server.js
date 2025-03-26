@@ -14,7 +14,7 @@ const knowledgeBaseId = 'MTE5NzU4NzI2NzgyNzY4OTA2MjU';
 let sessionClient;
 try {
   sessionClient = new dialogflow.SessionsClient({
-    keyFilename: './diplopal-ydko-6298df55c416.json'
+    keyFilename: './diplopal-ydko-2e11661250b0.json'
   });
   console.log(" Dialogflow sessionClient initialized successfully");
 } catch (err) {

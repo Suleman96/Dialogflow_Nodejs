@@ -4,3 +4,5 @@ aws-ec2-keypair-ubuntu24
 diplopal-ydko-2e11661250b0.json
 dialogflow-ui-key.pem
 node_modules/
+package-lock.json
+package.json
