@@ -1,14 +1,5 @@
-Application Default Credentials in Local Development Environment    :
-https://cloud.google.com/docs/authentication/provide-credentials-adc
-
-Google Cloud APIs and Credentials:
-https://console.cloud.google.com/apis/credentials?inv=1&invt=Abqisw&project=diplopal-ydko
-API KEY 1: AIzaSyBJI66gSw2jicvm1crj8IbQUxmTZgAIkAA
-
 
 # Implementation of AWS EC2 
-
-
 
 ## Connect locally to EC2's Linux using SSH in Gitbash
 In [AWS EC2](https://eu-north-1.console.aws.amazon.com/ec2/), create Instance and get the SSH Key from the SSH Client:
@@ -16,7 +7,7 @@ In [AWS EC2](https://eu-north-1.console.aws.amazon.com/ec2/), create Instance an
 Run this command, if necessary, to ensure your key is not publicly viewable.
 
 ``` bash
-chmod 400 "dialogflow-ui-key.pem"
+chmod 400 "dialogflow-key-file.pem"
 ```
 
 Instance using its Public DNS:
@@ -27,13 +18,13 @@ ubuntu@ec2-your-ec2-ip.eu-north-1.compute.amazonaws.com
 Run the bottom line to connect using SSH 
 
 ``` bash
-ssh -i "dialogflow-ui-key.pem" ubuntu@ec2-13-53-125-185.eu-north-1.compute.amazonaws.com
+ssh -i "dialogflow-key-file.pem" ubuntu@ec2-ip-address.eu-north-1.compute.amazonaws.com
 ``` 
 
 ## AWS Key for Instance
-Save this Key file (.pem format) from AWS EC2  
+Save this Key pairing file (.pem format) from AWS EC2 to the local folder as a '.pem' file  
  ``` bash
- aws keyaws-ec2-keypair-ubuntu24\dialogflow-ui-key.pem
+ aws local_folder\dialogflow-key-file.pem
  ```
 
 ## Installation of Necessary Packages
@@ -50,7 +41,6 @@ sudo apt install nodejs npm -y
 node -v && npm -v   # Check installation
 node --version
 ```
-
 
 ### Install Unzip to install curl:
 ```bash
@@ -73,49 +63,44 @@ sudo apt-get install rsync
 To upload the files on the AWS EC2, use the linux command called <b>scp</b> to copies everything or <b>rsync</b> for selectively adding data to EC2 
 
 ``` bash
-rsync -avz --exclude 'node_modules' --exclude '.git' --exclude '.env' --exclude 'aws-ec2-keypair-ubuntu24' \ -e "ssh -i ~/.aws-ec2-keypair-ubuntu24/dialogflow-ui-key.pem" \ .   ubuntu@ec2-13-53-125-185.eu-north-1.compute.amazonaws.com:~/app
+rsync -avz --exclude 'node_modules' --exclude '.git' --exclude '.env' --exclude 'aws-ec2-keypair-ubuntu24' \ -e "ssh -i ~/.aws-ec2-keypair-ubuntu24/dialogflow-key-file.pem" \ .   ubuntu@ec2-ip-address.eu-north-1.compute.amazonaws.com:~/app
 ``` 
 OR
 
 ``` bash
 
-scp -i "aws-ec2-keypair-ubuntu24/dialogflow-ui-key.pem" -r "C:/Users/virtu/Desktop/DiploTech/ChatBot/dialogflow-backend" ubuntu@ec2-13-53-125-185.eu-north-1.compute.amazonaws.com:/home/ubuntu/
+scp -i "aws-ec2-keypair-ubuntu24/dialogflow-key-file.pem" -r "C:/Users/virtu/Desktop/DiploTech/ChatBot/dialogflow-backend" ubuntu@ec2-ip-address.eu-north-1.compute.amazonaws.com:/home/ubuntu/
 ``` 
 
 Location of AWS EC2 Pairing KEY
 ``` bash
-folder\dialogflow-ui-key.pem
+local_folder\dialogflow-key-file.pem
 ``` 
 
 Accessing AWS EC2 Instance using SSH
 ``` bash
-chmod 400 "dialogflow-ui-key.pem"
-ssh -i "dialogflow-ui-key.pem" ubuntu@ec2-13-53-125-185.eu-north-1.compute.amazonaws.com
+chmod 400 "dialogflow-key-file.pem"
+ssh -i "local_folder\dialogflow-key-file.pem" ubuntu@ec2-ip-address.eu-north-1.compute.amazonaws.com
 ``` 
 
 
 
 transfer the ONLY json file to EC2
 ``` bash
-scp -i dialogflow-ui-key.pem -r diplopal-ydko-2e11661250b0.json  ubuntu@ec2-13-53-125-185.eu-north-1.compute.amazonaws.com:/home/ubuntu/
+scp -i dialogflow-key-file.pem -r dialogflow_api_key.json  ubuntu@ec2-ip-address.eu-north-1.compute.amazonaws.com:/home/ubuntu/
 ```
 
 Use this JSON file to authenticate API requests
 ``` bash
-export GOOGLE_APPLICATION_CREDENTIALS="/home/ubuntu/diplopal-ydko-2e11661250b0.json"
+export GOOGLE_APPLICATION_CREDENTIALS="/home/ubuntu/dialogflow_api_key.json"
 ```
-
-
-
-
 
 Check <b>Public IP</b> in EC2 using command:
 
 ``` bash
-
 curl ifconfig.me
 ```
-<b>Result: </b> 13.53.125.185
+<b>Result: </b> 00.00.000.000
 
 
 <b>Private IP </b>
@@ -123,10 +108,10 @@ curl ifconfig.me
 hostname -I
 ```
 
-<b>Result:</b> 172.31.18.182
+<b>Result:</b> 111.11.11.111
 
 
-Run command in Bash in the EC2 Instance:
+Run command in Bash in the EC2 Instance to start server:
 
 ```bash
 node server.js
@@ -134,45 +119,35 @@ node server.js
 
 Now, Run the code:
 ``` bash
-curl http://13.53.125.185:3000
+curl http://00.00.000.000.:X000
 ```
 <b> Result:</b> Chatbot backend is running!
 
 if the chatbot handles POST requests (chat reply), try sending a POST request instead of GET
 
 ```bash
-curl -X POST http://13.53.125.185:3000/dialogflow -H "Content-Type: application/json" -d '{"message": "Hello"}'
+curl -X POST http://00.00.000.000.:X000/dialogflow -H "Content-Type: application/json" -d '{"message": "Hello"}'
 
 ```
 
 or Run this in local browser. A chatbot will appear on the bottom left
 ```bash
-http://13.53.125.185/
+http://00.00.000.000/
 ```
 
-
-Deny access to Port 3000
+Deny access to Port X000
 ```bash
-sudo ufw deny 3000
+sudo ufw deny X000
 
 ```
 
 
 ## How to Restart server using pm2
-PM2 makes sure that the EC2 will be running the Nodejs application continously, even when the AWS is close. It allows you quickly start, control, or stop your node processes
-
+PM2 makes sure that the EC2 will be running the Nodejs application continously, even when the AWS is close.
+It allows you quickly start, control, or stop your node processes
 ```bash
 pm2 start server.js
 pm2 restart server.js
 sudo systemctl restart nginx
 ```
-
-
-
-
-
-
-
-
-
 
