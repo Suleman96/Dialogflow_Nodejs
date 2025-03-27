@@ -1,5 +1,5 @@
 
-# Implementation of AWS EC2 
+# Implementation of Google Dialogflow ES in AWS EC2 
 
 ## Connect locally to EC2's Linux using SSH in Gitbash
 In [AWS EC2](https://eu-north-1.console.aws.amazon.com/ec2/), create Instance and get the SSH Key from the SSH Client:
