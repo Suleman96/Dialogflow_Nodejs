@@ -145,6 +145,10 @@ curl -X POST http://13.53.125.185:3000/dialogflow -H "Content-Type: application/
 
 ```
 
+or Run this in local browser. A chatbot will appear on the bottom left
+```bash
+http://13.53.125.185/
+```
 
 
 Deny access to Port 3000
@@ -154,12 +158,17 @@ sudo ufw deny 3000
 ```
 
 
-How to Restart server using pm2
+## How to Restart server using pm2
+PM2 makes sure that the EC2 will be running the Nodejs application continously, even when the AWS is close. It allows you quickly start, control, or stop your node processes
 
 ```bash
+pm2 start server.js
 pm2 restart server.js
 sudo systemctl restart nginx
 ```
+
+
+
 
 
 
